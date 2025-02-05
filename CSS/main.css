@@ -1,0 +1,195 @@
+body{
+    background-color: antiquewhite;
+}
+
+.transform, .transition, .animation{
+    border: 2px solid gray;
+    margin: 1rem 0;
+}
+
+.box{
+    width: 200px;
+    height: 200px;
+}
+
+.b1{
+    background-color: cyan;
+}
+
+.b2{
+    background-color: pink;
+}
+
+.b3{
+    background-color: #ccccff;
+}
+
+.b4{
+    background-color: #ffffc5;
+}
+
+/* CSS transitions */
+
+.transiton .b1{
+    /* Property, Duration, Timing and Delay */
+    transition: width 1000s ease-in-out 0.5s;
+}
+
+.transition .b1:hover{
+    width: 400px;
+}
+
+.transition .b2{
+    transition: width 1s 0.2s, height 0.5s 0.5s;
+    transition-timing-function: ease-in;
+}
+
+.transition .b2:hover{
+    width: 400px;
+    height: 400px;
+}
+
+.transition .b3{
+    transition: transform 1s cubic-bezier(0,1.62,.77,.06) 0.5s;
+}
+
+.transition .b3:hover{
+    transform: rotate(80deg);
+}
+
+.transition .b4{
+    transition: all 1s ease-out 0.2s;
+}
+
+.transition .b4:hover{
+    border-radius: 2rem;
+    background-color: burlywood;
+}
+
+/* CSS Transform */
+
+.transform .box{
+    transition: all 1s ease-in-out 0.2s;
+}
+
+.transform .b1:hover{
+    transform: translate(200px, 100px);
+}
+
+.transform .b2{
+    transform: scale(0.8);
+}
+
+.transform .b2:hover{
+    transform: scale(1.2);
+}
+
+.transform .b3{
+    transform-origin: right top;
+}
+
+.transform .b3:hover{
+    transform: rotate(-45deg);
+}
+
+/* before hover make sure there is X and Y angle added to the b4 */
+
+.transform .b4{
+    transform: skewX(45deg) skewY(20deg);
+}
+
+/* after hover it will normal angle (0) */
+
+.transform .b4:hover{
+    transform: skew(0);
+}
+
+/* CSS Animation */
+
+@keyframes changeColor{
+    from{
+        background-color: brown;
+    }
+    to{
+        background-color: cadetblue;
+    }
+}
+
+.animation .b1{
+    animation-name: changeColor;
+    animation-duration: 2s;
+    animation-delay: 3s;
+    animation-fill-mode: forwards;  
+}
+
+@keyframes moveAround{
+    0%{
+        transofrm: translate(0, 0);
+    }
+    25%{
+        transofrm: translate(200px, 0);
+    }
+    50%{
+        transofrm: translate(200px, 200px);
+    }
+    75%{
+ 
+        transofrm: translate(0, 200px);
+    }
+    100%{
+        transofrm: translate(0, 0);
+    }
+}
+
+.animation .b2{
+    animation-name: moveAround 4s;
+    animation-delay: 3s;
+    animation-iteration-count: 10;
+    animation-direction: alternate-reverse;
+}
+
+@keyframes transformbox{
+    0%{
+        transofrm: scale(0.7) rotateX(0) translateX(0);
+    }
+    100%{
+        transofrm: scale(1.2) rotateX(180deg) translateX(600px);
+    }
+}
+
+.animation .b3{
+    /* name duration timing function delay count direction fill */
+    animation-name: transformbox 1s 3s infinite alternate;
+}
+
+.animation .b3:active{
+    animation-play-state: paused;
+}
+
+@keyyframes random{
+    0%{
+        transform: translate (0, 0)
+    }
+    25%{
+        transform: translate (0, 300px)
+    }
+    50%{
+        transform: translate (300px, 0)
+    }
+    75%{
+        transform: translate (300px, 300px)
+    }
+    100%{
+        transform: translate (400px, 400px)
+    }
+    125%{
+        transform: translate (300px, 0)
+    }
+    150%{
+        transform: translate (0, 0)
+    }
+}
+
+.animation .b4{
+    animation: random
+}
